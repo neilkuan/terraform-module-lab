@@ -9,7 +9,7 @@ data "aws_ssm_parameter" "linux_ami" {
 
 resource "aws_instance" "example_instance" {
   ami               = data.aws_ssm_parameter.linux_ami.value
-  availability_zone = var.instance_az ? var.instance_az : null
+  availability_zone = var.instance_az
   instance_type     = var.instance_type
   count             = var.instance_count
   tags = {
